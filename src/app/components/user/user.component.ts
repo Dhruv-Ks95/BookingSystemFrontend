@@ -13,7 +13,6 @@ import { Booking, CreateBookingDTO } from '../../models/booking';
     <div class="container">
       <h2>User Dashboard</h2>
       
-      <!-- Booking Form -->
       <div class="card mb-4">
         <div class="card-body">
           <h3>Book a Seat</h3>
@@ -35,7 +34,6 @@ import { Booking, CreateBookingDTO } from '../../models/booking';
         </div>
       </div>
 
-      <!-- Current Bookings -->
       <div class="card">
         <div class="card-body">
           <h3>Your Bookings</h3>
