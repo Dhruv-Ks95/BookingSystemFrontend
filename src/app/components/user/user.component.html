@@ -1,1 +1,62 @@
-<p>user works!</p>
+
+<div class="container">
+    <h2>User Dashboard</h2>
+    
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3>Book a Seat</h3>
+        <form (ngSubmit)="bookSeat()">
+          <div class="mb-3">
+            <label class="form-label">Employee ID</label>
+            <input type="number" class="form-control" [(ngModel)]="newBooking.employeeId" name="employeeId">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input type="date" class="form-control" [(ngModel)]="newBooking.bookingDate" name="bookingDate">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Seat Number</label>
+            <input type="number" class="form-control" [(ngModel)]="newBooking.seatNumber" name="seatNumber">
+          </div>
+          <button type="submit" class="btn btn-primary">Book Seat</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h3>Your Bookings</h3>
+        <div class="mb-3">
+          <label class="form-label">Enter Employee ID to view bookings:</label>
+          <div class="input-group">
+            <input type="number" class="form-control" [(ngModel)]="searchEmployeeId">
+            <button class="btn btn-primary" (click)="loadBookings()">Search</button>
+          </div>
+        </div>
+        
+        <table class="table" *ngIf="bookings.length > 0">
+          <thead>
+            <tr>
+              <th>Booking ID</th>
+              <th>Date</th>
+              <th>Seat Number</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let booking of bookings">
+              <td>{{booking.bookingId}}</td>
+              <td>{{booking.bookingDate | date}}</td>
+              <td>{{booking.seatId}}</td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="cancelBooking(booking.bookingId)">
+                  Cancel
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="bookings.length === 0">No bookings found.</p>
+      </div>
+    </div>
+  </div>
